@@ -73,7 +73,7 @@ function processInput(value) {
 
 function updateDisplay(value) {
     const display = document.querySelector("#display");
-    display.textContent = value;
+    display.textContent = Math.round(value * 1000) / 1000;
 }
 
 function clearDisplay() {
