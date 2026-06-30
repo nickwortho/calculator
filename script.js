@@ -1,3 +1,8 @@
+const ADD = 0;
+const SUB = 1;
+const MUL = 2;
+const DIV = 3;
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -18,15 +23,6 @@ function divide(num1, num2) {
     }
 }
 
-const ADD = 0;
-const SUB = 1;
-const MUL = 2;
-const DIV = 3;
-
-let operator = 0;
-let operand1 = 0;
-let operand2 = 0;
-
 function operate(operator, num1, num2) {
     switch (operator) {
         case ADD:
@@ -41,3 +37,23 @@ function operate(operator, num1, num2) {
             return console.log(`ERROR: operate()`);
     }
 }
+
+// function drawDisplay() { }
+
+// function drawButtons() {
+//     const rows = document.querySelectorAll(".row");
+//     const buttonsInRow = 4;
+//     for (const row of rows) {
+//         for (let i = 0; i < buttonsInRow; i++) {
+//             const btn = document.createElement("button");
+//             row.appendChild(btn);
+//         }
+//     }
+// }
+
+// function assignButtons() {
+//     const operationButtons = [CLEAR]
+//     const digitButtons = {}
+// }
+
+// drawButtons();

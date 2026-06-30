@@ -1,0 +1,39 @@
+* {
+    /* outline: 1px solid red; */
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+}
+
+#calculator {
+    outline: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    aspect-ratio: 1;
+
+}
+
+#display {
+    outline: 1px solid grey;
+    font-size: 2rem;
+    padding-right: 1rem;
+    display: flex;
+    flex: 0.25;
+    align-items: center;
+    justify-content: end;
+}
+
+#inputBtns {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+button {
+    flex: 1;
+}
