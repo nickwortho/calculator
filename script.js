@@ -1,7 +1,9 @@
-const ADD = 0;
-const SUB = 1;
-const MUL = 2;
-const DIV = 3;
+const digitButtons = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const operatorButtons = ["ADD", "SUB", "MUL", "DIV"];
+
+let operator = "";
+let operands = ["", ""];
+let currOperand = 0;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -19,41 +21,74 @@ function divide(num1, num2) {
     if (num2 != 0) {
         return num1 / num2;
     } else {
-        return `ERROR: divide()`;
+        console.log(`ERROR: divide by zero`);
+        return "ERR";
     }
 }
 
 function operate(operator, num1, num2) {
     switch (operator) {
-        case ADD:
+        case "ADD":
             return add(num1, num2);
-        case SUB:
+        case "SUB":
             return subtract(num1, num2);
-        case MUL:
+        case "MUL":
             return multiply(num1, num2);
-        case DIV:
+        case "DIV":
             return divide(num1, num2);
         default:
-            return console.log(`ERROR: operate()`);
+            console.log(`ERROR: unrecognised operand`);
+            return "ERR";
     }
 }
 
-// function drawDisplay() { }
+function processInput(value) {
+    // digit buttons
+    if (digitButtons.includes(value)) {
+        operands[currOperand] += value; // string concat
+        updateDisplay(operands[currOperand]);
+    }
+    // operator buttons
+    else if (operatorButtons.includes(value)) {
+        operator = value;
+        currOperand = 1;
+    }
+    // clear button
+    else if (value == "CLR") {
+        clearValues();
+        clearDisplay();
+    }
+    // equals button
+    else if (value == "EQL") {
+        let result = operate(operator, Number(operands[0]), Number(operands[1]))
+        console.log("result: " + result);
+        updateDisplay(result);
+        clearValues();
+        currOperand = 0;
+    }
+    else {
+        console.log(`ERROR: unrecognised input`)
+    }
+}
 
-// function drawButtons() {
-//     const rows = document.querySelectorAll(".row");
-//     const buttonsInRow = 4;
-//     for (const row of rows) {
-//         for (let i = 0; i < buttonsInRow; i++) {
-//             const btn = document.createElement("button");
-//             row.appendChild(btn);
-//         }
-//     }
-// }
+function updateDisplay(value) {
+    const display = document.querySelector("#display");
+    display.textContent = value;
+}
 
-// function assignButtons() {
-//     const operationButtons = [CLEAR]
-//     const digitButtons = {}
-// }
+function clearDisplay() {
+    const display = document.querySelector("#display");
+    display.textContent = "";
+}
 
-// drawButtons();
+function clearValues() {
+    operands = ["", ""];
+    operator = "";
+}
+
+const buttons = document.querySelectorAll("button");
+for (const btn of buttons) {
+    btn.addEventListener("click", () => {
+        processInput(btn.dataset.value);
+    });
+}

@@ -6,15 +6,16 @@
 
 #calculator {
     outline: 1px solid grey;
+    width: 50%;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
-    width: 50%;
     aspect-ratio: 1;
-
 }
 
 #display {
     outline: 1px solid grey;
+    min-height: 2rem;
     font-size: 2rem;
     padding-right: 1rem;
     display: flex;
@@ -36,4 +37,8 @@
 
 button {
     flex: 1;
+}
+
+.nul {
+    pointer-events: none;
 }
